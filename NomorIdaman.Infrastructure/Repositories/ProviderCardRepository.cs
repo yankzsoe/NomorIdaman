@@ -8,13 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace NomorIdaman.Infrastructure.Repositories {
-    public class ProviderRepository : GenericRepository<ProviderRepository>, IProviderCardRepository {
+    public class ProviderCardRepository : GenericRepository<ProviderCardRepository>, IProviderCardRepository {
 
         public AppDbContext AppDbContext {
             get { return Context as AppDbContext; }
         }
 
-        public ProviderRepository(DbContext context) : base(context) {
+        public ProviderCardRepository(DbContext context) : base(context) {
         }
 
         public async Task AddAsync(ProviderCard entity) {
