@@ -8,12 +8,17 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Common\" />
-    <Folder Include="Features\" />
+    <Folder Include="Features\ProviderCard\Commands\" />
+    <Folder Include="Features\SIMCard\" />
+    <Folder Include="Features\Shop\" />
     <Folder Include="Services\" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="FluentValidation" Version="10.3.6" />
+    <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="10.3.6" />
+    <PackageReference Include="MediatR" Version="10.0.1" />
+    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="10.0.1" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="6.0.0" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="6.0.0" />
   </ItemGroup>
