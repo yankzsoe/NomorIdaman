@@ -1,4 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using NomorIdaman.Application.Common.Models.Enums;
+using NomorIdaman.Application.Features.ProviderCard.Queries.GetList;
 using NomorIdaman.Application.Interfaces.Repositories;
 using NomorIdaman.Domain.Entities;
 using System;
@@ -48,6 +50,32 @@ namespace NomorIdaman.Infrastructure.Repositories {
 
         async Task<ProviderCard> IGenericRepository<ProviderCard>.GetAsync(int id) {
             return await AppDbContext.ProviderCards.FindAsync(id);
+        }
+
+        public async Task<(int totalCount, IEnumerable<ProviderCard>)> GetListAsync(ProviderGetListQuery query) {
+            IQueryable<ProviderCard> providers = AppDbContext.ProviderCards.AsNoTracking();
+            if (!string.IsNullOrWhiteSpace(query.Keyword)) {
+                providers = providers.Where(e => e.Name.Contains(query.Keyword));
+            }
+
+            if (query.IsActive.HasValue) {
+                providers = providers.Where(e => e.IsActive == query.IsActive.Value);
+            }
+
+            if (query.SortBy == SortBy.Asc) {
+                providers = providers.OrderBy(e => e.Name);
+            } else {
+                providers = providers.OrderByDescending(e => e.Name);
+            }
+
+            int totalCount = await providers.AsNoTracking().CountAsync();
+
+            var list = await providers
+                .Skip((query.PageNumber - 1) * query.PageSize)
+                .Take(query.PageSize)
+                .AsNoTracking()
+                .ToListAsync();
+            return (totalCount, list);
         }
     }
 }

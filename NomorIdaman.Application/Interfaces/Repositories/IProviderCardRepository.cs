@@ -1,4 +1,5 @@
-﻿using NomorIdaman.Domain.Entities;
+﻿using NomorIdaman.Application.Features.ProviderCard.Queries.GetList;
+using NomorIdaman.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,5 +10,6 @@ namespace NomorIdaman.Application.Interfaces.Repositories {
     public interface IProviderCardRepository : IGenericRepository<ProviderCard> {
         Task<ProviderCard> GetByIdAsNoTrackingAsync(int id);
         Task<IEnumerable<ProviderCard>> GetAllAsNoTrackingAsync();
+        Task<(int totalCount, IEnumerable<ProviderCard>)> GetListAsync(ProviderGetListQuery query);
     }
 }
