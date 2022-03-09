@@ -34,7 +34,7 @@ namespace NomorIdaman.Application.Features.ProviderCard.Queries.GetList {
         }
 
         public async Task<PagedResponse<List<ProviderGetListViewModel>>> Handle(ProviderGetListQuery request, CancellationToken cancellationToken) {
-            var (total, list) = await _unitOfWork.ProviderCards.GetListAsync(request);
+            var (total, list) = await _unitOfWork.ProviderCards.GetListAsNoTrackingAsync(request);
             var result = new List<ProviderGetListViewModel>();
 
             foreach (var item in list) {

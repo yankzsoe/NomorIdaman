@@ -52,7 +52,7 @@ namespace NomorIdaman.Infrastructure.Repositories {
             return await AppDbContext.ProviderCards.FindAsync(id);
         }
 
-        public async Task<(int totalCount, IEnumerable<ProviderCard>)> GetListAsync(ProviderGetListQuery query) {
+        public async Task<(int totalCount, IEnumerable<ProviderCard>)> GetListAsNoTrackingAsync(ProviderGetListQuery query) {
             IQueryable<ProviderCard> providers = AppDbContext.ProviderCards.AsNoTracking();
             if (!string.IsNullOrWhiteSpace(query.Keyword)) {
                 providers = providers.Where(e => e.Name.Contains(query.Keyword));

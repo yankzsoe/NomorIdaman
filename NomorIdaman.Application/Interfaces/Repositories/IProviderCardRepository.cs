@@ -10,6 +10,6 @@ namespace NomorIdaman.Application.Interfaces.Repositories {
     public interface IProviderCardRepository : IGenericRepository<ProviderCard> {
         Task<ProviderCard> GetByIdAsNoTrackingAsync(int id);
         Task<IEnumerable<ProviderCard>> GetAllAsNoTrackingAsync();
-        Task<(int totalCount, IEnumerable<ProviderCard>)> GetListAsync(ProviderGetListQuery query);
+        Task<(int totalCount, IEnumerable<ProviderCard>)> GetListAsNoTrackingAsync(ProviderGetListQuery query);
     }
 }
