@@ -1,4 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using NomorIdaman.Application.Common.Models.Enums;
+using NomorIdaman.Application.Features.Shop.Queries.GetList;
 using NomorIdaman.Application.Interfaces.Repositories;
 using NomorIdaman.Domain.Entities;
 using System.Collections.Generic;
@@ -44,6 +46,32 @@ namespace NomorIdaman.Infrastructure.Repositories {
 
         async Task<Shop> IGenericRepository<Shop>.GetAsync(int id) {
             return await AppDbContext.Shops.FindAsync(id);
+        }
+
+        public async Task<(int count, IEnumerable<Shop> shops)> GetListAsNotrackingAsync(ShopGetListQuery query) {
+            IQueryable<Shop> shops = AppDbContext.Shops.AsNoTracking();
+           
+            if (!string.IsNullOrWhiteSpace(query.Keyword)) {
+                shops = shops.AsNoTracking().Where(e => e.Name.Contains(query.Keyword) || e.Code.Contains(query.Keyword));
+            }
+
+            if (query.IsActive.HasValue) {
+                shops = shops.AsNoTracking().Where(e => e.IsActive == query.IsActive.Value);
+            }
+
+            if (query.SortBy == SortBy.Asc) {
+                shops = shops.AsNoTracking().OrderBy(e => e.Name);
+            } else {
+                shops = shops.AsNoTracking().OrderByDescending(e => e.Name);
+            }
+
+            int count = await shops.AsNoTracking().CountAsync();
+            var list = await shops
+                .Skip((query.PageNumber - 1) * query.PageSize)
+                .Take(query.PageSize)
+                .ToListAsync();
+
+            return (count, list);
         }
     }
 }
