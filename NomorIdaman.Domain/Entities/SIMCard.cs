@@ -20,7 +20,7 @@ namespace NomorIdaman.Domain.Entities {
         public bool IsActive { get; set; }
 
         [Required]
-        public int ProviderId { get; set; }
+        public int ProviderCardId { get; set; }
         public ProviderCard ProviderCard { get; set; }
 
         [Required]
