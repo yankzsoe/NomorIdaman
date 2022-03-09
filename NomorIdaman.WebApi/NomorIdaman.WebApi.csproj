@@ -16,11 +16,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\Shop\" />
-    <Folder Include="Controllers\SIMCard\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\NomorIdaman.Infrastructure\NomorIdaman.Infrastructure.csproj" />
   </ItemGroup>
 

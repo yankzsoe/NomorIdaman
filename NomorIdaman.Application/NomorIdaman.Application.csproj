@@ -9,8 +9,8 @@
 
   <ItemGroup>
     <Folder Include="Features\ProviderCard\Commands\" />
-    <Folder Include="Features\SIMCard\" />
-    <Folder Include="Features\Shop\" />
+    <Folder Include="Features\Shop\Commands\" />
+    <Folder Include="Features\SIMCard\Commands\" />
     <Folder Include="Services\" />
   </ItemGroup>
 
