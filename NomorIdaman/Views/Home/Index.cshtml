@@ -1,8 +1,29 @@
-﻿@{
+﻿@using NomorIdaman.WebApplication.Models
+@model IndexViewModel
+
+@{
     ViewData["Title"] = "Home Page";
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h1 class="display-4">Welcome to Nomor Idaman</h1>
+</div>
+
+<div class="form-control text-center" >
+    <label asp-for=@(Model.ShopSelected)>Shop</label>
+    <select asp-for=@(Model.ShopSelected) asp-items="@(new SelectList(Model.shops,"Code","Name"))">
+        <option>-- All Shop --</option>
+    </select>
+
+    <label asp-for=@(Model.ProviderSelected)>Provider</label>
+    <select asp-for=@(Model.ProviderSelected) asp-items="@(new SelectList(Model.providers,"Id","Name"))">
+        <option>-- All Provider --</option>
+    </select>
+
+    <label asp-for=@(Model.SIMCardSelected)>SIM Cards</label>
+    <select asp-for=@(Model.SIMCardSelected) asp-items="@(new SelectList(Model.simCards,"CardNumber","CardNumber"))">
+        <option>-- Please select one --</option>
+    </select>
+    <br />
+    <button class="btn btn-outline-dark px-5 mt-2">Search</button>
 </div>
