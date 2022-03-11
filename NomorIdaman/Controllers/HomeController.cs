@@ -40,7 +40,7 @@ namespace NomorIdaman.WebApplication.Controllers {
                             ShopCode = data[i]["shopCode"].GetValue<string>(),
                             ShopId = data[i]["shopId"].GetValue<int>(),
                             CardNumber = data[i]["cardNumber"].GetValue<string>(),
-                            Price = data[i]["price"].GetValue<decimal>(),
+                            Price = data[i]["price"].GetValue<string>(),
                         };
                         simCards.Add(item);
                     }

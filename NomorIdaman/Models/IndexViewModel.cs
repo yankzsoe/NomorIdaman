@@ -23,7 +23,7 @@ namespace NomorIdaman.WebApplication.Models {
 
     public class SIMCardViewModel {
         public string CardNumber { get; set; }
-        public decimal Price { get; set; }
+        public string Price { get; set; }
         public int ProviderCardId { get; set; }
         public string ProviderCardName { get; set; }
         public string ShopCode { get; set; }

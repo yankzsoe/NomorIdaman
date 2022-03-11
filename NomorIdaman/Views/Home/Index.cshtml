@@ -6,24 +6,51 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome to Nomor Idaman</h1>
+    <h1 class="display-4">Selamat Datang di Nomor Idaman</h1>
 </div>
 
-<div class="form-control text-center" >
-    <label asp-for=@(Model.ShopSelected)>Shop</label>
-    <select asp-for=@(Model.ShopSelected) asp-items="@(new SelectList(Model.shops,"Code","Name"))">
-        <option>-- All Shop --</option>
+<div class="form-control text-center p-2">
+    <label asp-for=@(Model.ShopSelected)>Toko</label>
+    <select asp-for=@(Model.ShopSelected) asp-items="@(new SelectList(Model.shops,"Code","Code"))">
+        <option>-- Semua Toko --</option>
     </select>
 
     <label asp-for=@(Model.ProviderSelected)>Provider</label>
     <select asp-for=@(Model.ProviderSelected) asp-items="@(new SelectList(Model.providers,"Id","Name"))">
-        <option>-- All Provider --</option>
-    </select>
-
-    <label asp-for=@(Model.SIMCardSelected)>SIM Cards</label>
-    <select asp-for=@(Model.SIMCardSelected) asp-items="@(new SelectList(Model.simCards,"CardNumber","CardNumber"))">
-        <option>-- Please select one --</option>
+        <option>-- Semua Operator --</option>
     </select>
     <br />
-    <button class="btn btn-outline-dark px-5 mt-2">Search</button>
+    <button class="btn btn-outline-dark px-5 mt-2">
+        <i class="fa fa-searchengin" style="color:beige"></i> Cari
+    </button>
+</div>
+<div class="d-flex flex-wrap justify-content-start p-1">
+    @{
+        int length = Model.simCards.Count();
+        for (var i = 0; i < length; i++) {
+            <div class="card m-1 p-0" style="max-width:155px;">
+                <div class="card-header">
+                    <h5 class="card-title" style="font-size: 1rem;">
+                        <i class="fa fa-mobile" aria-hidden="true"></i>
+                        @(Model.simCards.ElementAt(i).CardNumber)
+                    </h5>
+                </div>
+                <div class="card-body p-1">
+                    <p class="card-text" style="font-size: 0.9rem;">
+                        <i class="fa fa-tag" aria-hidden="true"></i>
+                        @(Model.simCards.ElementAt(i).Price)
+                        <br />
+                        <i class="fa fa-building-o" aria-hidden="true"></i>
+                        @(Model.simCards.ElementAt(i).ShopCode)
+                    </p>
+                </div>
+                <div class="card-footer">
+                    <a href="#" class="btn btn-outline-info btn-sm">
+                        <i class="fa fa-shopping-bag" aria-hidden="true" style="color:seagreen;">
+                        </i> Beli
+                    </a>
+                </div>
+            </div>
+        }
+    }
 </div>
