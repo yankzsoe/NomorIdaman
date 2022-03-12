@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace NomorIdaman.Application.Features.Shop.Queries.GetList {
     public class ShopGetListViewModel {
+        public int Id { get; set; }
         public string Code { get; set; }
         public string Name { get; set; }
         public string Image { get; set; }

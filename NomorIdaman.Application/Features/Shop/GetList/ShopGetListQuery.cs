@@ -39,6 +39,7 @@ namespace NomorIdaman.Application.Features.Shop.Queries.GetList {
 
             foreach (var item in list) {
                 var vm = new ShopGetListViewModel() {
+                    Id = item.Id,
                     Code = item.Code,
                     Name = item.Name,
                     Description = item.Description,

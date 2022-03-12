@@ -69,6 +69,14 @@ namespace NomorIdaman.Infrastructure.Repositories {
                 simCards = simCards.Where(e => e.IsActive == query.IsActive.Value);
             }
 
+            if (query.ShopId > 0) {
+                simCards = simCards.Where(e => e.ShopId == query.ShopId);
+            }
+
+            if (query.ProviderId > 0) {
+                simCards = simCards.Where(e => e.ProviderCardId == query.ProviderId);
+            }
+
             if (query.OrderBy == SIMCardOrderBy.Provider) {
                 if (query.SortBy == SortBy.Asc) {
                     simCards = simCards.OrderBy(e => e.ProviderCard.Name);

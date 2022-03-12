@@ -19,6 +19,16 @@ namespace NomorIdaman.Application.Features.SIMCard.Queries.GetList {
         /// <summary>
         /// default: all
         /// </summary>
+        public int ShopId { get; set; }
+
+        /// <summary>
+        /// default: all
+        /// </summary>
+        public int ProviderId { get; set; } = 0;
+
+        /// <summary>
+        /// default: all
+        /// </summary>
         public bool? IsActive { get; set; }
 
         /// <summary>
