@@ -20,14 +20,20 @@ namespace NomorIdaman.WebApplication.Controllers {
             _bridgeApiSettings = bridgeApiSettings;
         }
 
-        public IActionResult Index() {
+        public IActionResult Index(int ShopSelected = 0, int ProviderSelected = 0) {
             var vm = new IndexViewModel();
             using (var httpClient = new HttpClient()) {
                 httpClient.BaseAddress = new Uri(_bridgeApiSettings.BaseAPiUrl);
                 httpClient.DefaultRequestHeaders.Clear();
                 httpClient.DefaultRequestHeaders.Add("Accept", "application/json");
 
-                Task<HttpResponseMessage> simCardResponse = httpClient.GetAsync("api/sim-card?keyword=&isActive=true&sortBy=Asc&orderBy=Shop&pageNumber=1&pageSize=10");
+                string url = "api/sim-card?keyword=&isActive=true&sortBy=Asc&orderBy=Shop&pageNumber=1&pageSize=10";
+                if (ShopSelected > 0)
+                    url = string.Concat(url,"&shopId=", ShopSelected);
+                if(ProviderSelected > 0)
+                    url = string.Concat(url,"&providerId=", ProviderSelected);
+
+                Task<HttpResponseMessage> simCardResponse = httpClient.GetAsync(url);
                 JsonNode simCardNode = JsonNode.Parse(simCardResponse.Result.Content.ReadAsStringAsync().Result.ToString());
                 if (simCardNode["succeeded"].GetValue<bool>()) {
                     var simCards = new List<SIMCardViewModel>();
@@ -71,8 +77,8 @@ namespace NomorIdaman.WebApplication.Controllers {
                     var count = data.AsArray().Count;
                     for (int i = 0; i < count; i++) {
                         var item = new ShopViewModel() {
-                            Code = data[i]["code"].GetValue<string>(),
-                            Name = data[i]["name"].GetValue<string>()
+                            Id = data[i]["id"].GetValue<int>(),
+                            Code = data[i]["code"].GetValue<string>()
                         };
                         shops.Add(item);
                     }

@@ -2,9 +2,8 @@
 
 namespace NomorIdaman.WebApplication.Models {
     public class IndexViewModel {
-        public string ShopSelected { get; set; }
-        public string ProviderSelected { get; set; }
-        public string SIMCardSelected { get; set; }
+        public int ShopSelected { get; set; }
+        public int ProviderSelected { get; set; }
 
         public IEnumerable<ProviderViewModel> providers { get; set; }
         public IEnumerable<ShopViewModel> shops { get; set; }
@@ -17,8 +16,8 @@ namespace NomorIdaman.WebApplication.Models {
     }
 
     public class ShopViewModel {
+        public int Id { get; set; }
         public string Code { get; set; }
-        public string Name { get; set; }
     }
 
     public class SIMCardViewModel {
