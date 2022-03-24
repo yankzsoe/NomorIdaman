@@ -19,6 +19,8 @@ namespace NomorIdaman.Domain.Entities {
 
         public bool IsActive { get; set; }
 
+        public bool IsSold { get; set; }
+
         [Required]
         public int ProviderCardId { get; set; }
         public ProviderCard ProviderCard { get; set; }
