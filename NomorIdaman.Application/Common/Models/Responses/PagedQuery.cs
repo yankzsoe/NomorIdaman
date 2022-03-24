@@ -32,7 +32,7 @@ namespace NomorIdaman.Application.Common.Models.Responses {
             get => pageSize < 1 ? 1 : pageSize;
             set => pageSize = (value > _maxPageSize) ? _maxPageSize : value;
         }
-        private int pageSize { get; set; } = 10;
-        private const int _maxPageSize = 100;
+        private int pageSize { get; set; } = 100;
+        private const int _maxPageSize = 500;
     }
 }
