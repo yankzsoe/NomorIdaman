@@ -5,6 +5,7 @@ using NomorIdaman.Domain.Entities;
 using NomorIdaman.Infrastructure.Configurations;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -19,11 +20,14 @@ namespace NomorIdaman.Infrastructure {
         public virtual DbSet<Shop> Shops { get; set; }
         public virtual DbSet<ProviderCard> ProviderCards { get; set; }
         public virtual DbSet<SIMCard> SIMCards { get; set; }
+        public virtual DbSet<SIMCardSummary> SIMCardSummaries { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder) {
             modelBuilder.ApplyConfiguration(new ShopConfiguration());
             modelBuilder.ApplyConfiguration(new ProviderCardConfiguration());
             modelBuilder.ApplyConfiguration(new SIMCardConfiguration());
+            modelBuilder.ApplyConfiguration(new SIMCardSummaryConfiguration());
+            modelBuilder.Ignore<SIMCardSummary>();
         }
 
         public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default) {

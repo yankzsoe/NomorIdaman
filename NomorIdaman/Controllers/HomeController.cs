@@ -27,7 +27,7 @@ namespace NomorIdaman.WebApplication.Controllers {
                 httpClient.DefaultRequestHeaders.Clear();
                 httpClient.DefaultRequestHeaders.Add("Accept", "application/json");
 
-                string url = "api/sim-card?keyword=&isActive=true&sortBy=Asc&orderBy=Shop&pageNumber=1&pageSize=10";
+                string url = "api/sim-card/union?keyword=&isActive=true&sortBy=Asc&orderBy=Shop&pageNumber=1&pageSize=100";
                 if (ShopSelected > 0)
                     url = string.Concat(url,"&shopId=", ShopSelected);
                 if(ProviderSelected > 0)
