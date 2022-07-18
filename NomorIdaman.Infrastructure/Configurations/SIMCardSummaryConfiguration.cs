@@ -7,6 +7,7 @@ namespace NomorIdaman.Infrastructure.Configurations {
     public class SIMCardSummaryConfiguration : IEntityTypeConfiguration<SIMCardSummary> {
         public void Configure(EntityTypeBuilder<SIMCardSummary> builder) {
             builder.HasNoKey();
+            builder.ToView("SIMCardSummary");
         }
     }
 }

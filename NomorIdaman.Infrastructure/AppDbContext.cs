@@ -27,7 +27,6 @@ namespace NomorIdaman.Infrastructure {
             modelBuilder.ApplyConfiguration(new ProviderCardConfiguration());
             modelBuilder.ApplyConfiguration(new SIMCardConfiguration());
             modelBuilder.ApplyConfiguration(new SIMCardSummaryConfiguration());
-            modelBuilder.Ignore<SIMCardSummary>();
         }
 
         public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default) {

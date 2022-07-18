@@ -163,17 +163,8 @@ namespace NomorIdaman.Infrastructure.Repositories {
         }
 
         public async Task<(int count, IEnumerable<SIMCardSummary>)> GetListSIMCardSummary(SIMCardGetListSummaryQuery query) {
-            var sql = "SELECT P.Name AS CardName, COUNT(P.Name) Count" +
-                      " FROM SIMCard S " +
-                      " JOIN ProviderCard P ON S.ProviderCardId = P.Id " +
-                      " JOIN Shop SH ON S.ShopId = SH.Id " +
-                      " WHERE S.IsActive = 1 " +
-                      " GROUP BY P.Name, S.ProviderCardId " +
-                      " ORDER BY S.ProviderCardId";
-            IQueryable<SIMCardSummary> summaries = AppDbContext.SIMCardSummaries.FromSqlRaw(sql);
-            
-            var list = await summaries.AsNoTracking().ToListAsync();
-            int count = list.Count;
+            var list = await AppDbContext.SIMCardSummaries.AsNoTracking().ToListAsync();
+            int count = await AppDbContext.SIMCardSummaries.AsNoTracking().CountAsync();
             return (count, list);
         }
     }
