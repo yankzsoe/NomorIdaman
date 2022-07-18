@@ -2,7 +2,7 @@
 using NomorIdaman.Application.Common.Formatters;
 using NomorIdaman.Application.Common.Models.Enums;
 using NomorIdaman.Application.Common.Models.Responses;
-using NomorIdaman.Application.Features.SIMCard.GetList;
+using NomorIdaman.Application.Features.SIMCard.Queries.GetList;
 using NomorIdaman.Application.Interfaces;
 using System.Collections.Generic;
 using System.Threading;
