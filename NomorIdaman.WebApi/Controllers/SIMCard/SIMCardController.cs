@@ -29,7 +29,7 @@ namespace NomorIdaman.WebApi.Controllers.SIMCard {
         /// Summary of SIM Card
         /// </summary>
         [HttpGet("summary")]
-        public async Task<ActionResult<PagedResponse<SIMCardGetListSummaryViewModel>>> GetListSummary([FromQuery] SIMCardGetListSummaryQuery query) {
+        public async Task<ActionResult<Response<List<SIMCardGetListSummaryViewModel>>>> GetListSummary([FromQuery] SIMCardGetListSummaryQuery query) {
             return Ok(await Mediator.Send(query));
         }
     }
