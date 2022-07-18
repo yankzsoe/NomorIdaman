@@ -1,6 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using NomorIdaman.Application.Common.Models.Enums;
-using NomorIdaman.Application.Features.SIMCard.GetList;
 using NomorIdaman.Application.Features.SIMCard.Queries.GetList;
 using NomorIdaman.Application.Features.SIMCard.Queries.GetListSummary;
 using NomorIdaman.Application.Features.SIMCard.Queries.GetListUnion;
